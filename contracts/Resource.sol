@@ -1,4 +1,4 @@
-pragma solidity ^0.7.0;
+pragma solidity >=0.6.0;
 
 import "./IERC20.sol";
 import "./SafeMath.sol";
@@ -11,31 +11,31 @@ contract Resource is IERC20 {
 
     uint256 private _totalSupply;
 
-    function totalSupply() public view returns (uint) {
+    function totalSupply() public view override returns (uint) {
         return _totalSupply;
     }
 
-    function balanceOf(address tokenOwner) public view returns (uint balance) {
+    function balanceOf(address tokenOwner) public view override returns (uint balance) {
         return _balances[tokenOwner];
     }
 
-    function allowance(address tokenOwner, address spender) public view returns (uint remaining) {
+    function allowance(address tokenOwner, address spender) public view override returns (uint remaining) {
         return _allowances[tokenOwner][spender];
     }
 
-    function transfer(address to, uint tokens) public returns (bool success) {
-        _transfer(_msgSender(), to, tokens);
+    function transfer(address to, uint tokens) public override returns (bool success) {
+        _transfer(msg.sender, to, tokens);
         return true;
     }
 
-    function approve(address spender, uint tokens) public returns (bool success) {
-        _approve(_msgSender(), spender, tokens);
+    function approve(address spender, uint tokens) public override returns (bool success) {
+        _approve(msg.sender, spender, tokens);
         return true;
     }
 
-    function transferFrom(address from, address to, uint tokens) public returns (bool success) {
+    function transferFrom(address from, address to, uint tokens) public override returns (bool success) {
         _transfer(from, to, tokens);
-        _approve(from, _msgSender(), _allowances[from][_msgSender()].sub(tokens));
+        _approve(from, msg.sender, _allowances[from][msg.sender].sub(tokens));
         return true;
     }
 
@@ -71,47 +71,44 @@ contract Resource is IERC20 {
         _allowances[owner][spender] = tokens;
         emit Approval(owner, spender, tokens);
     }
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 }
 
 contract Metalicium is Resource {
-    function name() public view returns (string) {
+    function name() public pure returns (string memory) {
         return "Metalicium";
     }
 
-    function symbol() public view returns (string) {
+    function symbol() public pure returns (string memory) {
         return "Mtm";
     }
 }
 
 contract Aellementese is Resource {
-    function name() public view returns (string) {
+    function name() public pure returns (string memory) {
         return "Aellementese";
     }
 
-    function symbol() public view returns (string) {
+    function symbol() public pure returns (string memory) {
         return "Aee";
     }
 }
 
 contract Grinion is Resource {
-    function name() public view returns (string) {
+    function name() public pure returns (string memory) {
         return "Grinion";
     }
 
-    function symbol() public view returns (string) {
+    function symbol() public pure returns (string memory) {
         return "Gnn";
     }
 }
 
 contract Mumenum is Resource {
-    function name() public view returns (string) {
+    function name() public pure returns (string memory) {
         return "Mumenum";
     }
 
-    function symbol() public view returns (string) {
+    function symbol() public pure returns (string memory) {
         return "Mmm";
     }
 }
