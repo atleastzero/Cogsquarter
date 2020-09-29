@@ -1,18 +1,18 @@
 pragma solidity ^0.7.0;
 
 contract CharacterFactory {
-    enum Tribe {
+    enum Class {
         Mech,
         Sentroid, 
         Suiter,
         Cyborg
     }
 
-    event NewCharacter(string name, Tribe tribe);
+    event NewCharacter(string name, Class class);
 
     struct Character {
         string name;
-        Tribe tribe;
+        Class class;
         uint defense;
         uint attack;
     }
@@ -21,14 +21,14 @@ contract CharacterFactory {
 
     mapping (address => Character) public ownerToCharacter;
 
-    function createCharacter(string memory _name, Tribe _tribe) public {
+    function createCharacter(string memory _name, Class _class) public {
         require(ownerToCharacter[msg.sender].defense == 0);
         Character storage character = ownerToCharacter[msg.sender];
         character.name = _name;
-        character.tribe = _tribe;
+        character.class = _class;
         character.defense = 1;
         character.attack = 1;
         characters.push(character);
-        emit NewCharacter(_name, _tribe);
+        emit NewCharacter(_name, _class);
     }
 }
