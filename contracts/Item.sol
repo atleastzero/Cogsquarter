@@ -4,12 +4,24 @@ import "./IERC721.sol";
 import "./SafeMath.sol";
 
 contract Item is IERC721 {
+    enum Part {
+        Head,
+        Chest,
+        Legs
+    }
 
     using SafeMath for uint256;
 
     mapping (uint => address) itemApprovals;
     mapping (uint => address) public itemToOwner;
     mapping (address => uint) ownerInventoryCount;
+
+    struct ItemDetails {
+        string name;
+        Part part;
+        uint defense;
+        uint attack;
+    }
 
     function balanceOf(address _owner) external view override returns (uint256) {
         return ownerInventoryCount[_owner];

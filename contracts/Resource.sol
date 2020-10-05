@@ -85,6 +85,10 @@ contract Metalicium is Resource {
     function _mintMetalicium(address account, uint256 tokens) internal {
         _mint(account, tokens);
     }
+
+    function _burnMetalicium(address account, uint256 tokens) internal {
+        _burn(account, tokens);
+    }
 }
 
 contract Aellementese is Resource {
@@ -98,6 +102,10 @@ contract Aellementese is Resource {
 
     function _mintAellementese(address account, uint256 tokens) internal {
         _mint(account, tokens);
+    }
+
+    function _burnAellementese(address account, uint256 tokens) internal {
+        _burn(account, tokens);
     }
 }
 
@@ -113,6 +121,10 @@ contract Grinion is Resource {
     function _mintGrinion(address account, uint256 tokens) internal {
         _mint(account, tokens);
     }
+
+    function _burnGrinion(address account, uint256 tokens) internal {
+        _burn(account, tokens);
+    }
 }
 
 contract Mumenum is Resource {
@@ -126,5 +138,9 @@ contract Mumenum is Resource {
 
     function _mintMumenum(address account, uint256 tokens) internal {
         _mint(account, tokens);
+    }
+
+    function _burnMumenum(address account, uint256 tokens) internal {
+        _burn(account, tokens);
     }
 }
