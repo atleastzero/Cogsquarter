@@ -1,6 +1,8 @@
 pragma solidity >=0.6.0;
 
-contract CharacterFactory {
+import "./Ownable.sol";
+
+contract CharacterFactory is Ownable {
     enum Class {
         Mech,
         Sentroid, 
