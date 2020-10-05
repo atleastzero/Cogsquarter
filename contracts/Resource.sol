@@ -81,6 +81,10 @@ contract Metalicium is Resource {
     function symbol() public pure returns (string memory) {
         return "Mtm";
     }
+
+    function _mintMetalicium(address account, uint256 tokens) internal {
+        _mint(account, tokens);
+    }
 }
 
 contract Aellementese is Resource {
@@ -90,6 +94,10 @@ contract Aellementese is Resource {
 
     function symbol() public pure returns (string memory) {
         return "Aee";
+    }
+
+    function _mintAellementese(address account, uint256 tokens) internal {
+        _mint(account, tokens);
     }
 }
 
@@ -101,6 +109,10 @@ contract Grinion is Resource {
     function symbol() public pure returns (string memory) {
         return "Gnn";
     }
+
+    function _mintGrinion(address account, uint256 tokens) internal {
+        _mint(account, tokens);
+    }
 }
 
 contract Mumenum is Resource {
@@ -110,5 +122,9 @@ contract Mumenum is Resource {
 
     function symbol() public pure returns (string memory) {
         return "Mmm";
+    }
+
+    function _mintMumenum(address account, uint256 tokens) internal {
+        _mint(account, tokens);
     }
 }
