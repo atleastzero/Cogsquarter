@@ -10,24 +10,23 @@ abstract contract IERC20 {
     function balanceOf(address tokenOwner) virtual public view returns (uint balance);
     
     /// @return remaining The remaining number of tokens that `spender` will be
-    /// allowed to spend on behalf of `owner` through {transferFrom}. This is
+    /// allowed to spend on behalf of `tokenOwner` through {transferFrom}. This is
     /// zero by default.
     /// @notice This value changes when {approve} or {transferFrom} are called.
     function allowance(address tokenOwner, address spender) virtual public view returns (uint remaining);
     
-    /// @dev Moves `amount` tokens from the caller's account to `tokenOwner`.
+    /// @dev Moves `tokens` tokens from the caller's account to `to`.
     /// @notice Emits a {Transfer} event.
     /// @return success A boolean value indicating whether the operation succeeded
     function transfer(address to, uint tokens) virtual public returns (bool success);
     
-    /// @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+    /// @dev Sets `tokens` as the allowance of `spender` over the caller's tokens.
     /// @notice Emits an {Approval} event.
     /// @return success A boolean value indicating whether the operation succeeded.
     function approve(address spender, uint tokens) virtual public returns (bool success);
     
-    
-    /// @dev Moves `amount` tokens from `sender` to `recipient` using the
-    /// allowance mechanism. `amount` is then deducted from the caller's
+    /// @dev Moves `tokens` tokens from `from` to `to` using the
+    /// allowance mechanism. `tokens` is then deducted from the caller's
     /// allowance.
     /// @notice Emits a {Transfer} event.
     /// @return success A boolean value indicating whether the operation succeeded.
