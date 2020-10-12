@@ -1,6 +1,14 @@
 pragma solidity >=0.6.0;
 
+
+/// @title A place to generate characters 
+/// @author Megan OBryan
+/// @notice This generates characters which stores the stat info for a player
 contract CharacterFactory {
+
+    /// @title Class
+    /// @author Megan OBryan
+    /// @notice an enum specifying available character classes
     enum Class {
         Mech,
         Sentroid, 
@@ -10,6 +18,9 @@ contract CharacterFactory {
 
     event NewCharacter(string name, Class class);
 
+    /// @title Character
+    /// @author Megan OBryan
+    /// @notice the struct outlining stored info
     struct Character {
         string name;
         Class class;
@@ -21,6 +32,9 @@ contract CharacterFactory {
 
     mapping (address => Character) public ownerToCharacter;
 
+    /// @notice Creates a character for an account that doesn't have one
+    /// @param _name The name of the character
+    /// @param _class The class of the character as a Class enum
     function createCharacter(string memory _name, Class _class) public {
         require(ownerToCharacter[msg.sender].defense == 0);
         Character storage character = ownerToCharacter[msg.sender];
