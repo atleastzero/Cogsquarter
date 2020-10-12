@@ -39,7 +39,7 @@ contract Resource is IERC20 {
         return true;
     }
 
-    function _transfer(address from, address to, uint256 tokens) internal virtual {
+    function _transfer(address from, address to, uint256 tokens) internal {
         require(from != address(0));
         require(to != address(0));
 
@@ -48,7 +48,7 @@ contract Resource is IERC20 {
         emit Transfer(from, to, tokens);
     }
 
-    function _mint(address account, uint256 tokens) internal virtual {
+    function _mint(address account, uint256 tokens) internal {
         require(account != address(0));
 
         _totalSupply = _totalSupply.add(tokens);
@@ -56,7 +56,7 @@ contract Resource is IERC20 {
         emit Transfer(address(0), account, tokens);
     }
 
-    function _burn(address account, uint256 tokens) internal virtual {
+    function _burn(address account, uint256 tokens) internal {
         require(account != address(0));
 
         _balances[account] = _balances[account].sub(tokens);
@@ -64,7 +64,7 @@ contract Resource is IERC20 {
         emit Transfer(account, address(0), tokens);
     }
 
-    function _approve(address owner, address spender, uint256 tokens) internal virtual {
+    function _approve(address owner, address spender, uint256 tokens) internal {
         require(owner != address(0));
         require(spender != address(0));
 
@@ -74,73 +74,73 @@ contract Resource is IERC20 {
 }
 
 contract Metalicium is Resource {
-    function name() public pure returns (string memory) {
+    function name() public pure virtual returns (string memory) {
         return "Metalicium";
     }
 
-    function symbol() public pure returns (string memory) {
+    function symbol() public pure virtual returns (string memory) {
         return "Mtm";
     }
 
-    function _mintMetalicium(address account, uint256 tokens) internal {
+    function _mintMetalicium(address account, uint256 tokens) internal virtual {
         _mint(account, tokens);
     }
 
-    function _burnMetalicium(address account, uint256 tokens) internal {
+    function _burnMetalicium(address account, uint256 tokens) internal virtual {
         _burn(account, tokens);
     }
 }
 
 contract Aellementese is Resource {
-    function name() public pure returns (string memory) {
+    function name() public pure virtual returns (string memory) {
         return "Aellementese";
     }
 
-    function symbol() public pure returns (string memory) {
+    function symbol() public pure virtual returns (string memory) {
         return "Aee";
     }
 
-    function _mintAellementese(address account, uint256 tokens) internal {
+    function _mintAellementese(address account, uint256 tokens) internal virtual {
         _mint(account, tokens);
     }
 
-    function _burnAellementese(address account, uint256 tokens) internal {
+    function _burnAellementese(address account, uint256 tokens) internal virtual {
         _burn(account, tokens);
     }
 }
 
 contract Grinion is Resource {
-    function name() public pure returns (string memory) {
+    function name() public pure virtual returns (string memory) {
         return "Grinion";
     }
 
-    function symbol() public pure returns (string memory) {
+    function symbol() public pure virtual returns (string memory) {
         return "Gnn";
     }
 
-    function _mintGrinion(address account, uint256 tokens) internal {
+    function _mintGrinion(address account, uint256 tokens) internal virtual {
         _mint(account, tokens);
     }
 
-    function _burnGrinion(address account, uint256 tokens) internal {
+    function _burnGrinion(address account, uint256 tokens) internal virtual {
         _burn(account, tokens);
     }
 }
 
 contract Mumenum is Resource {
-    function name() public pure returns (string memory) {
+    function name() public pure virtual returns (string memory) {
         return "Mumenum";
     }
 
-    function symbol() public pure returns (string memory) {
+    function symbol() public pure virtual returns (string memory) {
         return "Mmm";
     }
 
-    function _mintMumenum(address account, uint256 tokens) internal {
+    function _mintMumenum(address account, uint256 tokens) internal virtual {
         _mint(account, tokens);
     }
 
-    function _burnMumenum(address account, uint256 tokens) internal {
+    function _burnMumenum(address account, uint256 tokens) internal virtual {
         _burn(account, tokens);
     }
 }
